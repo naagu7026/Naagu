@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneRupee.com - A Farmer's Initiative</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #ffd700;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    header p.tagline {
+      margin: 0;
+      font-style: italic;
+      font-weight: bold;
+    }
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 60px;
+      height: 60px;
+      background-image: url('farmer_logo_placeholder.png'); /* Placeholder image for logo */
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+    }
+    .hero {
+      position: relative;
+      width: 100%;
+      max-height: 80vh;
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+    }
+    .cta {
+      text-align: center;
+      padding: 2rem;
+      background-color: #fff;
+    }
+    .cta h2 {
+      margin-bottom: 1rem;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      background-color: #fff;
+    }
+    .feature-box {
+      max-width: 500px;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .feature-box img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .login-section {
+      padding: 2rem;
+      background-color: #ffffff;
+      text-align: center;
+    }
+    .login-form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .login-form input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .login-form button {
+      padding: 0.8rem 1.2rem;
+      border: none;
+      background-color: #ffd700;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .search-section {
+      text-align: center;
+      padding: 2rem;
+      background-color: #fff;
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .search-bar input[type="text"] {
+      width: 300px;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .search-bar button {
+      background: #ffd700;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"></div>
+    <h1>OneRupee.com</h1>
+    <p class="tagline">A Farmer's Initiative</p>
+  </header>
+
+  <div class="hero">
+    <img src="A_digital_illustration_depicts_a_futuristic_Indian.png" alt="Futuristic Village Market">
+  </div>
+
+  <div class="cta">
+    <h2>Empowering Farmers with Technology</h2>
+    <p>Search crops, view prices, and connect directly with local farmers in just one click.</p>
+    <button onclick="document.getElementById('login').scrollIntoView();">Get Started</button>
+  </div>
+
+  <div class="search-section">
+    <h2>Search Crops or Farmers</h2>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by crop, PIN code, etc.">
+      <button onclick="startVoiceSearch()">🎤</button>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature-box">
+      <h3>Step 1: Search & Compare Prices</h3>
+      <p>Find produce by PIN code, price, and availability.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Step 2: Pay ₹1 to Unlock Contact</h3>
+      <img src="A_digital_user_interface_screenshot_shows_a_paymen.png" alt="Unlock Contact UI">
+      <p>Instant payment via UPI or Wallet unlocks the farmer's phone number.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Step 3: Call or WhatsApp the Farmer</h3>
+      <p>Buy directly, no middlemen, no commission.</p>
+    </div>
+  </div>
+
+  <div class="login-section" id="login">
+    <h2>Login / Signup</h2>
+    <div class="login-form">
+      <input type="text" placeholder="Enter Phone Number or Email">
+      <input type="text" placeholder="Enter OTP">
+      <button>Continue</button>
+    </div>
+  </div>
+
+  <script>
+    function startVoiceSearch() {
+      if ('webkitSpeechRecognition' in window) {
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-IN';
+        recognition.start();
+
+        recognition.onresult = function(event) {
+          const result = event.results[0][0].transcript;
+          document.getElementById('searchInput').value = result;
+        };
+      } else {
+        alert("Your browser does not support voice recognition.");
+      }
+    }
+  </script>
+</body>
+</html>
+  
